@@ -42,8 +42,10 @@ function rateMovie() {
             });
         });
 
+        //click event
         stars.forEach((star, index) => {
             star.addEventListener('click', () => {
+                //add lock e trava estrelas na tela
                 const isLocked = star.classList.contains('lock');
                 for (let i = 0; i <= index; i++) {
                     if (isLocked) {
@@ -55,17 +57,29 @@ function rateMovie() {
                         stars[i].classList.add('lock');
                     }
                 }
+
+                //trava imagem das estrelas na tela
+                stars.forEach(star => {
+                    if (star.classList.contains('lock')) {
+                        const imageRating = star.closest('.rating');
+                        imageRating.style.opacity = '1';
+                        imageRating.style.background = 'linear-gradient(to right, rgba(134, 33, 63, 0.8) 0%, rgba(120, 53, 33, 0.8) 50%, rgba(134, 37, 33, 0.8) 100%)';
+                    }
+                });
+
+                const dataRating = star.dataset.rating;
+                const rating = star.closest('.rating');
+                const mediaFilme = rating.parentNode.querySelector('.mediaFilme');
+                mediaFilme.textContent = movies[moviePosters - 1] + "\n" + "      " + dataRating + ' ★';
+                console.log(dataRating);
             });
         });
-
-        // const imageWrapper = document.getElementById(movieId).querySelector('.image-wrapper');
-        // if (imageWrapper.querySelector('.lock')) {
-        //     const imageFilme = imageWrapper.querySelector('.img');
-        //     imageFilme.style.opacity = '0.9';
-        // }
-
     }
 }
 
 
-rateMovie();
+document.addEventListener('DOMContentLoaded', () => {
+    rateMovie();
+});
+
+console.log(movies);
