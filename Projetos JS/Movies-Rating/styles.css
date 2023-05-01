@@ -34,7 +34,7 @@ img {
 
 /* Escrita abaixo das imagens */
 
-.mediaFilme {
+.rateChosen, .mediaDoFilme {
     text-align: center;
     color:rebeccapurple;
     font-weight: 600;
@@ -52,7 +52,7 @@ img {
 .rating {
     position: absolute;
     width: 100%;
-    top: 75%;
+    top: 65%;
     left: 55%;
     transform: translate(-50%, -50%);
     opacity: 0;

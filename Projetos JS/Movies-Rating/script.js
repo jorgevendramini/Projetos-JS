@@ -8,6 +8,8 @@ Crie outra função que calcule a média das notas de um filme, informando o nom
 
 
 const movies = [];
+let ratings = [];
+
 
 //adiciona o título dos filmes a array
 const images = document.querySelectorAll('.imagemFilme');
@@ -68,13 +70,39 @@ function rateMovie() {
                 });
 
                 const dataRating = star.dataset.rating;
+                ratings[moviePosters - 1] = parseInt(dataRating);
                 const rating = star.closest('.rating');
-                const mediaFilme = rating.parentNode.querySelector('.mediaFilme');
-                mediaFilme.textContent = movies[moviePosters - 1] + "\n" + "      " + dataRating + ' ★';
-                console.log(dataRating);
+                const rateChosen = rating.parentNode.querySelector('.rateChosen');
+                rateChosen.textContent = movies[moviePosters - 1] + "\n" + "      " + dataRating + ' ★';
+
+                mediaDosFilmes();
+
             });
         });
     }
+    
+}
+
+function mediaDosFilmes (){
+        const mediaOfEachMovie = [];
+
+        for (let i = 0; i < movies.length; i++) {
+            const ratingsForMovie = ratings.slice(i*5, i*5+5);
+            const ratingsSum = ratingsForMovie.reduce((sum, rating) => sum + rating, 0);
+            const averageRating = ratingsSum / ratingsForMovie.length || 0;
+
+            mediaOfEachMovie.push({
+                nome: movies[i],
+                rating: averageRating.toFixed(1)
+            });
+
+            const mediaDoFilmes = document.querySelectorAll('.mediaDoFilme');
+            mediaOfEachMovie.forEach((movie, index) => {
+                mediaDoFilmes[index].textContent = movie.rating + ' ★';
+            });
+            
+        }
+
 }
 
 
