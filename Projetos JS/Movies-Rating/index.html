@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,10 @@
     <link rel="stylesheet" href="styles.css">
     <title>Cinemark</title>
 </head>
+
 <body>
 
-<!-- Imagens -->
+    <!-- Imagens -->
     <div class="linha">
         <div class="coluna">
             <div class="image-wrapper">
@@ -22,6 +24,7 @@
                     <span class="star" data-rating="5"></span>
                 </div>
                 <p class="rateChosen">★</p>
+                <p class="mediaLabel">Crítica: </p>
                 <p class="mediaDoFilme">★</p>
             </div>
         </div>
@@ -35,8 +38,9 @@
                     <span class="star" data-rating="4"></span>
                     <span class="star" data-rating="5"></span>
                 </div>
-            <p class="rateChosen">★</p>
-            <p class="mediaDoFilme">★</p>
+                <p class="rateChosen">★</p>
+                <p class="mediaLabel">Crítica: </p>
+                <p class="mediaDoFilme">★</p>
             </div>
         </div>
         <div class="coluna">
@@ -49,8 +53,9 @@
                     <span class="star" data-rating="4"></span>
                     <span class="star" data-rating="5"></span>
                 </div>
-            <p class="rateChosen">★</p>
-            <p class="mediaDoFilme">★</p>
+                <p class="rateChosen">★</p>
+                <p class="mediaLabel">Crítica: </p>
+                <p class="mediaDoFilme">★</p>
             </div>
         </div>
         <div class="coluna">
@@ -63,16 +68,25 @@
                     <span class="star" data-rating="4"></span>
                     <span class="star" data-rating="5"></span>
                 </div>
-            <p class="rateChosen">★</p>
-            <p class="mediaDoFilme">★</p>
+                <p class="rateChosen">★</p>
+                <p class="mediaLabel">Crítica: </p>
+                <p class="mediaDoFilme">★</p>
             </div>
         </div>
     </div>
-
+    <div class="container-form">
+        <form id="form-avaliacao" action="#">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="nome" required><br><br>
+            <label for="mensagem">Informações adicionais:</label><br>
+            <textarea name="mensagem" id="mensagem" rows="4" cols="50" maxlength="600" style="resize: none;"></textarea>
+            <br><br>
+            <input type="submit" value="Cadastrar Item" id="submit" onclick="mediaDosFilmes()">
+        </form>
+    </div>
 
     <script src="script.js">
-
-        
     </script>
 </body>
+
 </html>

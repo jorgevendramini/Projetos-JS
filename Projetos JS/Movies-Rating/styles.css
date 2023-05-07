@@ -34,7 +34,7 @@ img {
 
 /* Escrita abaixo das imagens */
 
-.rateChosen, .mediaDoFilme {
+.rateChosen, .mediaDoFilme, .mediaLabel{
     text-align: center;
     color:rebeccapurple;
     font-weight: 600;
@@ -82,4 +82,14 @@ img {
     filter: blur(0px);
     box-shadow: 10px 10px 10px black;
     box-shadow: 0px 0px -20px -20px rgba(0, 0, 0, 0.5) inset;
+}
+
+/* estilo do form de avaliação */
+
+.container-form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }

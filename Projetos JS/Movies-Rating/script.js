@@ -8,7 +8,8 @@ Crie outra função que calcule a média das notas de um filme, informando o nom
 
 
 const movies = [];
-let ratings = [];
+let ratings = new Array(movies.length).fill(0);
+const mediaOfEachMovie = new Array(movies.length).fill(0);
 
 
 //adiciona o título dos filmes a array
@@ -80,29 +81,45 @@ function rateMovie() {
             });
         });
     }
-    
+
 }
 
-function mediaDosFilmes (){
-        const mediaOfEachMovie = [];
 
-        for (let i = 0; i < movies.length; i++) {
-            const ratingsForMovie = ratings.slice(i*5, i*5+5);
-            const ratingsSum = ratingsForMovie.reduce((sum, rating) => sum + rating, 0);
-            const averageRating = ratingsSum / ratingsForMovie.length || 0;
+function atualizarMediaDosFilmes(filmeIndex) {
+    const ratingsForMovie = ratings.slice(filmeIndex * 5, filmeIndex * 5 + 5);
+    const ratingsSum = ratingsForMovie.reduce((sum, rating) => sum + rating, 0);
+    const averageRating = ratingsSum / ratingsForMovie.length || 0;
+    mediaOfEachMovie[filmeIndex].rating = averageRating.toFixed(1);
+}
 
-            mediaOfEachMovie.push({
-                nome: movies[i],
-                rating: averageRating.toFixed(1)
-            });
+function mediaDosFilmes() {
 
-            const mediaDoFilmes = document.querySelectorAll('.mediaDoFilme');
-            mediaOfEachMovie.forEach((movie, index) => {
-                mediaDoFilmes[index].textContent = movie.rating + ' ★';
-            });
-            
+    const nome = document.getElementById('nome').value.trim();
+    const rating = ratings[ratings.length - 1];
+    const text = document.getElementById('mensagem').value.trim();
+
+    if (rating !== undefined) {
+        const newMovie = {
+            nome: nome,
+            rating: rating.toFixed(1),
+            text: text
+        };
+
+
+        mediaOfEachMovie.push(newMovie);
+        const filmeIndex = mediaOfEachMovie.length - 1;
+        atualizarMediaDosFilmes(filmeIndex);
+    }
+
+
+    const mediaDoFilmes = document.querySelectorAll('.mediaDoFilme');
+
+    mediaOfEachMovie.forEach((movie, index) => {
+        if (movie.nome === nome) {
+            atualizarMediaDosFilmes(index);
+            mediaDoFilmes[index].innerHTML = mediaOfEachMovie[index].rating + ' ★';
         }
-
+    });
 }
 
 
