@@ -1,0 +1,43 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>Carrinho de Compras</title>
+  </head>
+
+  <body>
+
+    <h1>
+      Carrinho de Compras
+    </h1>
+
+    <h4>
+      Bem vindo, escolha quais itens deseja comprar:
+    </h4>
+
+    <form>
+      <label for="produto">Produto:</label>
+      <input type="text" name="produto" id="produto">
+      <br>
+      <label for="quantidade">Quantidade:</label>
+      <input type="number" name="quantidade" id="quantidade">
+      <br>
+      <label for="preco">Preço:</label>
+      <input type="number" name="preco" id="preco">
+      <br>
+      <button type="button" onclick="adicionarItemAoCarrinho()">Adicionar ao carrinho</button>
+      <button type="button" onclick="listarItensDoCarrinho()">Listar produtos no carrinho:</button>
+    </form>
+
+    <ul id="carrinho">
+
+    </ul>
+    <h5>
+      Total:<span id="total"></span>
+    </h5>
+
+    <script src="script.js"></script>
+  </body>
+
+</html>
